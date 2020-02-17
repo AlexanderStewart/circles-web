@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/circles-web/static/css/main.aaa68b26.chunk.css",
+    "main.js": "/circles-web/static/js/main.20ebfae7.chunk.js",
+    "main.js.map": "/circles-web/static/js/main.20ebfae7.chunk.js.map",
+    "runtime-main.js": "/circles-web/static/js/runtime-main.93dca1da.js",
+    "runtime-main.js.map": "/circles-web/static/js/runtime-main.93dca1da.js.map",
+    "static/js/2.0ceb2a68.chunk.js": "/circles-web/static/js/2.0ceb2a68.chunk.js",
+    "static/js/2.0ceb2a68.chunk.js.map": "/circles-web/static/js/2.0ceb2a68.chunk.js.map",
+    "index.html": "/circles-web/index.html",
+    "precache-manifest.c5357d8a1a2c6c30341aaf5255d122a6.js": "/circles-web/precache-manifest.c5357d8a1a2c6c30341aaf5255d122a6.js",
+    "service-worker.js": "/circles-web/service-worker.js",
+    "static/css/main.aaa68b26.chunk.css.map": "/circles-web/static/css/main.aaa68b26.chunk.css.map",
+    "static/js/2.0ceb2a68.chunk.js.LICENSE.txt": "/circles-web/static/js/2.0ceb2a68.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93dca1da.js",
+    "static/js/2.0ceb2a68.chunk.js",
+    "static/css/main.aaa68b26.chunk.css",
+    "static/js/main.20ebfae7.chunk.js"
+  ]
+}
