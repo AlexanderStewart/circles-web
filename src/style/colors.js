@@ -1,8 +1,8 @@
 const myColors = {
-  backgroundColor: "#247BA0",
-  activeCircleColor: "#FFFFFF",
-  selectedCircleColor: "#FFE066",
-  nonActiveCircleColor: "#FFB682"
+  background: "#247BA0",
+  active: "#FFFFFF",
+  selected: "#FFE066",
+  nonActive: "#FFB682"
 };
 
 export { myColors };

@@ -7,7 +7,7 @@ import { myColors } from "./style/colors.js";
 import { HorizontalSpace, VerticalSpace, Circle } from "./style/styles.js";
 
 //Logic files.
-import {} from "./logic.js";
+import { circleStates } from "./logic.js";
 
 class Board extends React.Component {
   renderCircle(i) {
@@ -87,49 +87,71 @@ class App extends React.Component {
     circleValues[5] = 1;
     circleValues[10] = 2;
 
-    var circleColors = Array(16).fill(myColors.nonActiveCircleColor);
-
-    circleColors[5] = myColors.activeCircleColor;
-    circleColors[10] = myColors.activeCircleColor;
-
-    circleColors[0] = myColors.selectedCircleColor;
-    circleColors[1] = myColors.selectedCircleColor;
-
-    var circleStates = Array(16).fill("nonactive");
-    circleStates[5] = "active";
-    circleStates[10] = "active";
+    var circleColors = Array(16).fill(myColors.nonActive);
+    circleColors[5] = myColors.active;
+    circleColors[10] = myColors.active;
 
     this.state = {
       circleValues: circleValues,
-      circleColors: circleColors,
-      circleStates: circleStates
+      circleColors: circleColors
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(i) {
-    console.log(i);
+    console.log("circle " + i + " clicked");
 
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
-    var circleStates = this.state.circleStates;
 
-    if (this.state.circleStates[i] === "nonactive") {
-      circleValues[i] = 1;
-      circleColors[i] = "#FFFFFF";
-      circleStates[i] = "active";
+    //Handles the main logic of the game alongside /src/logic.js
+    switch (circleStates[i]) {
 
-      console.log(this.state.circleStates[i]);
-    } else if (this.state.circleStates[i] === "active") {
-      circleValues[i] = null;
-      circleColors[i] = "#FFB682";
-      circleStates[i] = "nonactive";
+      case "nonactive":
+        changeCircleTo(i, "active");
+        break;
+
+      case "active":
+        changeCircleTo(i, "selected");
+        break;
+
+      case "selected":
+        changeCircleTo(i, "active");
+        break;
+
+      default:
+        break;
+
+    }
+
+    //Handles changing a given circle to a given state.
+    function changeCircleTo(i, state) {
+      switch (state) {
+
+        case "nonactive":
+          circleColors[i] = myColors.nonActive;
+          circleStates[i] = "nonactive";
+          break;
+
+        case "active":
+          circleColors[i] = myColors.active;
+          circleStates[i] = "active";
+          break;
+
+        case "selected":
+          circleColors[i] = myColors.selected;
+          circleStates[i] = "selected";
+          break;
+
+        default:
+          break;
+
+      }
     }
 
     this.setState({
       circleValues: circleValues,
-      circleColors: circleColors,
-      circleStates: circleStates
+      circleColors: circleColors
     });
   }
 
