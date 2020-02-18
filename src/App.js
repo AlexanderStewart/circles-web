@@ -2,9 +2,9 @@ import React from "react";
 
 //Imports.
 import "./style/index.css";
-import Board from './components/Board';
+import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
-import { circleStates } from "./logic.js";
+import { twoSelectedBeside } from "./logic.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -18,10 +18,19 @@ class App extends React.Component {
     circleColors[5] = myColors.active;
     circleColors[10] = myColors.active;
 
+    var circleStates = Array(16).fill("nonactive");
+    circleStates[5] = "active";
+    circleStates[10] = "active";
+
+    var selected = 0;
+
     this.state = {
       circleValues: circleValues,
-      circleColors: circleColors
+      circleColors: circleColors,
+      circleStates: circleStates,
+      selected: selected
     };
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -30,18 +39,24 @@ class App extends React.Component {
 
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
+    var circleStates = this.state.circleStates;
+    var selected = this.state.selected;
 
     //Handles the main logic of the game alongside /src/logic.js
     switch (circleStates[i]) {
       case "nonactive":
-        changeCircleTo(i, "active");
+        if (selected === 2 && twoSelectedBeside(i, circleStates)) {
+          changeCircleTo(i, "active");
+        }
         break;
 
       case "active":
+        selected++;
         changeCircleTo(i, "selected");
         break;
 
       case "selected":
+        selected--;
         changeCircleTo(i, "active");
         break;
 
@@ -74,7 +89,9 @@ class App extends React.Component {
 
     this.setState({
       circleValues: circleValues,
-      circleColors: circleColors
+      circleColors: circleColors,
+      circleStates: circleStates,
+      selected: selected
     });
   }
 
