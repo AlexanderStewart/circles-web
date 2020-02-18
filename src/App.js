@@ -2,7 +2,7 @@ import React from "react";
 
 //Imports.
 import "./style/index.css";
-import Board from './Board';
+import Board from './components/Board';
 import { myColors } from "./style/colors.js";
 import { circleStates } from "./logic.js";
 
