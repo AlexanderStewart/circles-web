@@ -4,7 +4,7 @@ import React from "react";
 import "./style/index.css";
 import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
-import { twoSelectedBeside } from "./logic.js";
+import { selectedBeside } from "./logic.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class App extends React.Component {
     //Handles the main logic of the game alongside /src/logic.js
     switch (circleStates[i]) {
       case "nonactive":
-        if (selected === 2 && twoSelectedBeside(i, circleStates)) {
+        if (selected === 2 && selectedBeside(i, circleStates)) {
           changeCircleTo(i, "active");
         }
         break;
