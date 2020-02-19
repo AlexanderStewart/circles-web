@@ -11,6 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    //Set board
     var circleValues = Array(16).fill(null);
     circleValues[5] = 1;
     circleValues[10] = 2;
@@ -45,20 +46,32 @@ class App extends React.Component {
 
     //Handles the main logic of the game alongside /src/logic.js
     switch (circleStates[i]) {
+      //Nonactive circle clicked.
       case "nonactive":
         if (selected === 2 && selectedBeside(i, circleStates)) {
           changeCircleTo(i, "active");
-          
+
           var sum = selectedNums(circleStates, circleValues);
           circleValues[i] = sum;
+
+          deselect();
         }
         break;
 
+      //Active circle clicked.
       case "active":
+        console.log("selected: " + selected);
+        if(selected >= 2) {
+          deselect();
+        }
+        if(!(selectedBeside(i, circleStates))) {
+          deselect();
+        }
         selected++;
         changeCircleTo(i, "selected");
         break;
 
+      //Selected circle clicked.
       case "selected":
         selected--;
         changeCircleTo(i, "active");
@@ -66,6 +79,16 @@ class App extends React.Component {
 
       default:
         break;
+    }
+
+    //Deselect all selected circles
+    function deselect() {
+      for (var z = 0; z <= 15; z++) {
+        if (circleStates[z] === "selected") {
+          changeCircleTo(z, "active");
+        }
+      }
+      selected = 0;
     }
 
     //Handles changing a given circle to a given state.
