@@ -6,8 +6,8 @@ export function selectedBeside(i, circleStates) {
         }
     }
 
-    const besideA = beside(i, indexes[0]);
-    const besideB = beside(i, indexes[1]);
+    var besideA = checkBeside(i, indexes[0]);
+    var besideB = checkBeside(i, indexes[1]);
 
     if(besideA || besideB) {
         return true;
@@ -16,25 +16,20 @@ export function selectedBeside(i, circleStates) {
     return false;
 }
 
-function beside(i, j) {
-    const leftBeside = leftBeside(i, j);
-    if(leftBeside)
+function checkBeside(i, j) {
+    if(leftBeside(i, j))
         return true;
 
-    const rightBeside = rightBeside(i, j);
-    if(rightBeside)
+    if(rightBeside(i, j))
         return true;
 
-    const remainingTopBeside = remainingTopBeside(i, j);
-    if(remainingTopBeside)
+    if(remainingTopBeside(i, j))
         return true;
 
-    const remainingBottomBeside = remainingBottomBeside(i, j);
-    if(remainingBottomBeside)
+    if(remainingBottomBeside(i, j))
         return true;
 
-    const centerBeside = centerBeside(i, j);
-    if(centerBeside)
+    if(centerBeside(i, j))
         return true;
 
     return false;

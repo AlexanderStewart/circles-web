@@ -4,7 +4,8 @@ import React from "react";
 import "./style/index.css";
 import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
-import { selectedBeside } from "./logic.js";
+import { selectedBeside } from "./logic/checkBeside.js";
+import { selectedNums } from "./logic/selectedNums.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -47,6 +48,9 @@ class App extends React.Component {
       case "nonactive":
         if (selected === 2 && selectedBeside(i, circleStates)) {
           changeCircleTo(i, "active");
+          
+          var sum = selectedNums(circleStates, circleValues);
+          circleValues[i] = sum;
         }
         break;
 
