@@ -64,4 +64,48 @@ body {
   user-select: none;
 }
 
-/*# sourceMappingURL=index.css.map */
+.title {
+  text-align: center;
+  color: #FFE066;
+  font-size: 50px;
+}
+
+.content-space {
+  height: 30px;
+}
+
+.github-link-text {
+  text-align: center;
+  color: #FFE066;
+}
+
+.github-link {
+  color: #FFE066;
+}
+
+/* @media (max-width: 500px) {
+  .game-board {
+    width: 400.0px;
+    height: 340px;
+  }
+  .circle {
+    width: 80.67px;
+    height: 80.67px;
+  }
+  .game-row {
+    width: 335.418px;
+    height: 80.67px;
+  }
+  .horizontal-space {
+    width: 4.245;
+    height: 
+  }
+
+  .vertical-space {
+    width:
+    height:
+  }
+} */
+
+
+

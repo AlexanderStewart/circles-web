@@ -18,6 +18,8 @@ class Board extends React.Component {
     render() {
       return (
         <div>
+          <div className="title">circles</div>
+          <div className="content-space"></div>
           <div className="game-board">
             <div className="game-row align-left">
               {this.renderCircle(0)}
@@ -59,14 +61,10 @@ class Board extends React.Component {
               {this.renderCircle(15)}
             </div>
           </div>
-          <div style={{ height: "30px" }}></div>
-          <div style={{ textAlign: "center", color: "#FFFFFF" }}>
-            Find the code here:{" "}
-            <a
-              style={{ color: "#FFFFFF" }}
-              href="https://github.com/AlexanderStewart/circles-web"
-            >
-              github.com/AlexanderStewart/circles-web
+          <div className="content-space"></div>
+          <div className="github-link-text">
+            find the code here: <a className="github-link" href="https://github.com/AlexanderStewart/circles-web">
+               github.com/alexanderstewart/circles-web
             </a>
           </div>
         </div>
