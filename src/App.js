@@ -1,7 +1,7 @@
 import React from "react";
 
 //Imports.
-import "./style/index.css";
+import "./style/index.scss";
 import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
 import { selectedBeside } from "./logic/checkBeside.js";

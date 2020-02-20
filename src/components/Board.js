@@ -1,7 +1,7 @@
 import React from "react";
 
 //Imports.
-import "../style/index.css";
+import "../style/index.scss";
 import { HorizontalSpace, VerticalSpace, Circle } from "../style/styles.js";
 
 class Board extends React.Component {
