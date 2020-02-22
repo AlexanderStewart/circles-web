@@ -132,7 +132,7 @@ class App extends React.Component {
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
-          onClick={this.handleClick}
+          onClick={this.onClick}
         />
       </div>
     );
