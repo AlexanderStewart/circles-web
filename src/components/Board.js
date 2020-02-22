@@ -11,7 +11,7 @@ class Board extends React.Component {
       <Circle
         value={this.props.circleValues[i]}
         color={this.props.circleColors[i]}
-        onClick={() => this.props.onClick(i)}
+        onClick={() => this.props.onClick}
       />
     );
   }
