@@ -21,18 +21,20 @@ body {
   padding: 0;
 }
 
+.space-above-title {
+  height: 20px;
+}
+
 .global-width {
-  width: 90vw;
+  width: $globalWidth;
   margin: 0 auto;
 }
 
 .title-container {
-  margin: 0 auto;
-  width: 90vw;
+  width: $globalWidth;
   height: $titleContainerHeight;
   background-color: $titleContainerColor;
   border-radius: 20px;
-  margin-top: 20px;
 }
 
 .title {
@@ -70,7 +72,6 @@ $minWidth: 576px;
 
   .global-width {
     width: $globalWidth;
-    margin: 0 auto;
   }
 
   .title-container {

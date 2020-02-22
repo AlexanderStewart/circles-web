@@ -18,11 +18,6 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div class="global-width">
-        <div className="title-container">
-          <div className="title">circles</div>
-        </div>
-        <div className="content-space"></div>
         <div className="game-board">
           <div className="game-row align-left">
             {this.renderCircle(0)}
@@ -64,19 +59,6 @@ class Board extends React.Component {
             {this.renderCircle(15)}
           </div>
         </div>
-        <div className="content-space"></div>
-        <div className="bottom-text-container">
-          <div className="github-link-text">
-            find the code here: <br></br>
-            <a
-              className="github-link"
-              href="https://github.com/AlexanderStewart/circles-web"
-            >
-              github.com/alexanderstewart/circles-web
-            </a>
-          </div>
-        </div>
-      </div>
     );
   }
 }

@@ -62,10 +62,10 @@ class App extends React.Component {
       //Active circle clicked.
       case "active":
         console.log("selected: " + selected);
-        if(selected >= 2) {
+        if (selected >= 2) {
           deselect();
         }
-        if(!(selectedBeside(i, circleStates))) {
+        if (!selectedBeside(i, circleStates)) {
           deselect();
         }
         selected++;
@@ -128,12 +128,29 @@ class App extends React.Component {
     const circleColors = this.state.circleColors;
 
     return (
-      <div className="app">
+      <div class="global-width">
+        <div class="space-above-title"></div>
+        <div className="title-container">
+          <div className="title">circles</div>
+        </div>
+        <div className="content-space"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
           onClick={this.handleClick}
         />
+        <div className="content-space"></div>
+        <div className="bottom-text-container">
+          <div className="github-link-text">
+            find the code here: <br></br>
+            <a
+              className="github-link"
+              href="https://github.com/AlexanderStewart/circles-web"
+            >
+              github.com/alexanderstewart/circles-web
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
