@@ -1,0 +1,107 @@
+$backgroundColor: #247ba0;
+$circleTextColor: #247ba0;
+
+$nonActiveColor: #ffb682;
+$titleContainerColor: #ffe066;
+$titleColor: #247ba0;
+$bottomTextColor: #ffe066;
+
+//Smallest Possible
+$gameBoardWidth: 90vw;
+$circleWidth: 4 * $gameBoardWidth / 19;
+$space: $circleWidth / 14;
+
+$gameBoardHeight: $circleWidth * 4;
+$gameRowWidth: $gameBoardHeight + $space * 3;
+$circleTextSize: $gameBoardWidth * 0.067;
+
+.game-board {
+    margin: 0 auto;
+    width: $gameBoardWidth;
+    height: $gameBoardHeight;
+    background-color: $backgroundColor;
+    border-radius: 25px;
+  }
+  
+  .game-row {
+    width: $gameRowWidth;
+    height: $circleWidth;
+    background-color: $backgroundColor;
+    border-radius: 25px;
+  }
+  
+  .align-left {
+    float: left;
+  }
+  
+  .align-right {
+    float: right;
+  }
+  
+  .horizontal-space {
+    width: $space;
+    height: 1px;
+    float: left;
+  }
+  
+  .vertical-space {
+    width: 1px;
+    height: $space;
+    float: top;
+  }
+  
+  .circle {
+    background-color: $nonActiveColor;
+    color: $circleTextColor;
+    text-align: center;
+    line-height: $circleWidth;
+    border-radius: $circleWidth;
+    font-size: $circleTextSize;
+    width: $circleWidth;
+    height: $circleWidth;
+    float: left;
+    /* no select text */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+$minWidth: 576px;
+@media (min-width: $minWidth) {
+  $gameBoardWidth: $minWidth * 0.9;
+  $circleWidth: 4 * $gameBoardWidth / 19;
+  $space: $circleWidth / 14;
+
+  $gameBoardHeight: $circleWidth * 4;
+  $gameRowWidth: $gameBoardHeight + $space * 3;
+  $circleTextSize: $gameBoardWidth * 0.067;
+
+  .game-board {
+    width: $gameBoardWidth;
+    height: $gameBoardHeight;
+  }
+
+  .game-row {
+    width: $gameRowWidth;
+    height: $circleWidth;
+  }
+
+  .horizontal-space {
+    width: $space;
+  }
+
+  .vertical-space {
+    height: $space;
+  }
+
+  .circle {
+    line-height: $circleWidth;
+    border-radius: $circleWidth;
+    font-size: $circleTextSize;
+    width: $circleWidth;
+    height: $circleWidth;
+  }
+}
