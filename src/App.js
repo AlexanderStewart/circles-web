@@ -75,7 +75,7 @@ class App extends React.Component {
       //Selected circle tapped.
       case "selected":
         selected--;
-        changeCircleTo(i, "active");
+        deselect();
         break;
 
       default:
