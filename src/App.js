@@ -34,11 +34,11 @@ class App extends React.Component {
       selected: selected
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleTap = this.handleTap.bind(this);
   }
 
-  handleClick(i) {
-    console.log("circle " + i + " clicked");
+  handleTap(i) {
+    console.log("circle " + i + " tapped");
 
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
@@ -47,7 +47,7 @@ class App extends React.Component {
 
     //Handles the main logic of the game alongside /src/logic.js
     switch (circleStates[i]) {
-      //Nonactive circle clicked.
+      //Nonactive circle tapped.
       case "nonactive":
         if (selected === 2 && selectedBeside(i, circleStates)) {
           changeCircleTo(i, "active");
@@ -59,7 +59,7 @@ class App extends React.Component {
         }
         break;
 
-      //Active circle clicked.
+      //Active circle tapped.
       case "active":
         console.log("selected: " + selected);
         if (selected >= 2) {
@@ -72,7 +72,7 @@ class App extends React.Component {
         changeCircleTo(i, "selected");
         break;
 
-      //Selected circle clicked.
+      //Selected circle tapped.
       case "selected":
         selected--;
         changeCircleTo(i, "active");
@@ -137,7 +137,8 @@ class App extends React.Component {
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
-          onClick={this.handleClick}
+          onTouchEnd={this.handleTap}
+          onMouseUp={this.handleTap}
         />
         <div className="content-space"></div>
         <div className="bottom-text-container">
