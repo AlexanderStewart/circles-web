@@ -137,7 +137,7 @@ class App extends React.Component {
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
-          onTouchEnd={this.handleTap}
+          onTouchEnd={(event) => this.processTouch}
           onMouseUp={this.handleTap}
         />
         <div className="content-space"></div>
@@ -154,6 +154,11 @@ class App extends React.Component {
         </div>
       </div>
     );
+  }
+
+  processTouch(event, i) { 
+    event.preventDefault();
+    this.handleTap(i);
   }
 }
 

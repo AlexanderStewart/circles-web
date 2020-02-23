@@ -1,8 +1,8 @@
 const myColors = {
-  background: "#247BA0",
-  active: "#FFFFFF",
-  selected: "#FFE066",
-  nonActive: "#FFB682"
+  background: "#faf8f0",
+  active: "#13ad37",
+  selected: "#f29721",
+  nonActive: "#ded8d1"
 };
 
 export { myColors };
