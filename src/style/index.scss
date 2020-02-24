@@ -36,7 +36,7 @@ body {
   border-radius: 20px;
   border: solid $titleContainerBorderColor;
   box-sizing: border-box;
-  border-width: 8px;
+  border-width: $globalWidth * 0.02;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,7 +78,7 @@ $minWidth: 576px;
 @media (min-width: $minWidth) {
   $globalWidth: $minWidth * 0.9;
 
-  $titleSize: $globalWidth * 0.13;
+  $titleSize: $globalWidth * 0.10;
   $titleContainerHeight: $globalWidth * 0.177;
   $circleTextSize: $globalWidth * 0.067;
   $contentSpaceSize: $minWidth * 0.04;
@@ -88,13 +88,11 @@ $minWidth: 576px;
     width: $globalWidth;
   }
 
-  .title-container {
+  .title {
     width: $globalWidth;
     height: $titleContainerHeight;
-  }
-
-  .title {
     font-size: $titleSize;
+    border-width: $globalWidth * 0.02;
   }
 
   .content-space-a {

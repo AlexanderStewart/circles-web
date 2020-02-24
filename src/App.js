@@ -197,6 +197,7 @@ class App extends React.Component {
               github.com/alexanderstewart/circles-web
             </a>
           </div>
+          <div class="space-above-title"></div>
         </div>
       </div>
     );
