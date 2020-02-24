@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    //Set board
+    //Set board.
     var circleValues = Array(16).fill(null);
     circleValues[5] = 1;
     circleValues[10] = 2;
@@ -21,12 +21,15 @@ class App extends React.Component {
     var circleColors = Array(16).fill(myColors.nonActive);
     circleColors[5] = myColors.active;
     circleColors[10] = myColors.active;
-    circleColors[6] = myColors.gold;
+    circleColors[6] = myColors.nonActive;
 
     var circleTextColors = Array(16).fill(myColors.background);
-    // circleTextColors[5] = myColors.active;
-    // circleTextColors[10] = myColors.active;
     circleTextColors[6] = myColors.goldText;
+
+    var circleBorderColor = Array(16).fill(myColors.nonActive);
+    circleBorderColor[5] = myColors.active;
+    circleBorderColor[10] = myColors.active;
+    circleBorderColor[6] = myColors.gold;
 
     var circleStates = Array(16).fill("nonactive");
     circleStates[5] = "active";
@@ -39,6 +42,7 @@ class App extends React.Component {
       circleValues: circleValues,
       circleColors: circleColors,
       circleTextColors: circleTextColors,
+      circleBorderColor: circleBorderColor,
       circleStates: circleStates,
       selected: selected
     };
@@ -52,6 +56,7 @@ class App extends React.Component {
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
     var circleTextColors = this.state.circleTextColors;
+    var circleBorderColor = this.state.circleBorderColor;
     var circleStates = this.state.circleStates;
     var selected = this.state.selected;
 
@@ -110,21 +115,29 @@ class App extends React.Component {
       switch (state) {
         case "nonactive":
           circleColors[i] = myColors.nonActive;
+          circleTextColors = myColors.background;
+          circleBorderColor[i] = myColors.nonActive;
           circleStates[i] = "nonactive";
           break;
 
         case "active":
           circleColors[i] = myColors.active;
+          circleTextColors = myColors.background;
+          circleBorderColor[i] = myColors.active;
           circleStates[i] = "active";
           break;
 
         case "selected":
           circleColors[i] = myColors.selected;
+          circleTextColors = myColors.background;
+          circleBorderColor[i] = myColors.selected;
           circleStates[i] = "selected";
           break;
 
         case "gold":
-          circleColors[i] = myColors.gold;
+          circleColors[i] = myColors.nonActive;
+          circleTextColors = myColors.goldText;
+          circleBorderColor[i] = myColors.gold;
           circleStates[i] = "gold";
           break;
 
@@ -137,6 +150,7 @@ class App extends React.Component {
       circleValues: circleValues,
       circleColors: circleColors,
       circleTextColors: circleTextColors,
+      circleBorderColor: circleBorderColor,
       circleStates: circleStates,
       selected: selected
     });
@@ -146,18 +160,18 @@ class App extends React.Component {
     const circleValues = this.state.circleValues;
     const circleColors = this.state.circleColors;
     const circleTextColors = this.state.circleTextColors;
+    const circleBorderColor = this.state.circleBorderColor;
 
     return (
       <div class="global-width">
         <div class="space-above-title"></div>
-        <div className="title-container">
-          <div className="title">circles</div>
-        </div>
+        <div className="title">circles</div>
         <div className="content-space-a"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
           circleTextColors={circleTextColors}
+          circleBorderColor={circleBorderColor}
           onPointerDown={this.handleTap}
         />
         <div className="content-space-b"></div>

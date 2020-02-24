@@ -1,14 +1,14 @@
 $backgroundColor: #faf8f0;
 $circleTextColor: #ded8d1;
 
-$nonActiveColor: #CEC1B4;
+$nonActiveColor: #cec1b4;
 $titleContainerBorderColor: #f29721;
 $titleColor: #f29721;
 $bottomTextColor: #918c86;
 
 //Smallest Possible
 $globalWidth: 90vw;
-$titleSize: $globalWidth * 0.13;
+$titleSize: $globalWidth * 0.10;
 $titleContainerHeight: $globalWidth * 0.177;
 $contentSpaceSize: 4vw;
 $bottomTextSize: $globalWidth * 0.04;
@@ -30,17 +30,16 @@ body {
   margin: 0 auto;
 }
 
-.title-container {
+.title {
   width: $globalWidth;
   height: $titleContainerHeight;
   border-radius: 20px;
   border: solid $titleContainerBorderColor;
-  border-width: 2px;
-}
-
-.title {
-  line-height: $titleContainerHeight;
-  margin: 0 auto;
+  box-sizing: border-box;
+  border-width: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: $titleColor;
   font-size: $titleSize;
