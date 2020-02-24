@@ -126,19 +126,18 @@ class App extends React.Component {
   render() {
     const circleValues = this.state.circleValues;
     const circleColors = this.state.circleColors;
-
+    
     return (
       <div class="global-width">
         <div class="space-above-title"></div>
         <div className="title-container">
-          <div className="title">circles - beta</div>
+          <div className="title">circles</div>
         </div>
         <div className="content-space"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
-          onTouchStart={(event) => this.processTouch}
-          onMouseDown={this.handleTap}
+          onPointerDown={this.handleTap}
         />
         <div className="content-space"></div>
         <div className="bottom-text-container">
@@ -157,8 +156,8 @@ class App extends React.Component {
   }
 
   processTouch(event, i) { 
-    event.preventDefault();
     this.handleTap(i);
+    event.preventDefault();
   }
 }
 
