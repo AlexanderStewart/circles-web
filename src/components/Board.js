@@ -11,6 +11,7 @@ class Board extends React.Component {
       <Circle
         value={this.props.circleValues[i]}
         color={this.props.circleColors[i]}
+        textColor={this.props.circleTextColors[i]}
         onPointerDown={() => this.props.onPointerDown(i)}
       />
     );

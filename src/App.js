@@ -16,20 +16,29 @@ class App extends React.Component {
     var circleValues = Array(16).fill(null);
     circleValues[5] = 1;
     circleValues[10] = 2;
+    circleValues[6] = 3;
 
     var circleColors = Array(16).fill(myColors.nonActive);
     circleColors[5] = myColors.active;
     circleColors[10] = myColors.active;
+    circleColors[6] = myColors.gold;
+
+    var circleTextColors = Array(16).fill(myColors.background);
+    // circleTextColors[5] = myColors.active;
+    // circleTextColors[10] = myColors.active;
+    circleTextColors[6] = myColors.goldText;
 
     var circleStates = Array(16).fill("nonactive");
     circleStates[5] = "active";
     circleStates[10] = "active";
+    circleStates[6] = "gold";
 
     var selected = 0;
 
     this.state = {
       circleValues: circleValues,
       circleColors: circleColors,
+      circleTextColors: circleTextColors,
       circleStates: circleStates,
       selected: selected
     };
@@ -42,6 +51,7 @@ class App extends React.Component {
 
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
+    var circleTextColors = this.state.circleTextColors;
     var circleStates = this.state.circleStates;
     var selected = this.state.selected;
 
@@ -78,6 +88,9 @@ class App extends React.Component {
         deselect();
         break;
 
+      case "gold":
+        break;
+      
       default:
         break;
     }
@@ -110,6 +123,11 @@ class App extends React.Component {
           circleStates[i] = "selected";
           break;
 
+        case "gold":
+          circleColors[i] = myColors.gold;
+          circleStates[i] = "gold";
+          break;
+
         default:
           break;
       }
@@ -118,6 +136,7 @@ class App extends React.Component {
     this.setState({
       circleValues: circleValues,
       circleColors: circleColors,
+      circleTextColors: circleTextColors,
       circleStates: circleStates,
       selected: selected
     });
@@ -126,38 +145,47 @@ class App extends React.Component {
   render() {
     const circleValues = this.state.circleValues;
     const circleColors = this.state.circleColors;
-    
+    const circleTextColors = this.state.circleTextColors;
+
     return (
       <div class="global-width">
         <div class="space-above-title"></div>
         <div className="title-container">
           <div className="title">circles</div>
         </div>
-        <div className="content-space"></div>
+        <div className="content-space-a"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
+          circleTextColors={circleTextColors}
           onPointerDown={this.handleTap}
         />
-        <div className="content-space"></div>
+        <div className="content-space-b"></div>
+        <div className="line-break"></div>
+        <div className="content-space-b"></div>
         <div className="bottom-text-container">
           <div className="github-link-text">
+            <strong>How To Play: </strong>Select any two 
+            adjacent green circles and then select an empty 
+            circle adjacent to one of them. The new circle's 
+            value is the sum of the previously selected 
+            circles.
+            <br></br>
+            <br></br>
+            The purpose of the game is to fill in the 
+            gold circle with a green circle that has 
+            the same number. 
+          </div>
+          <br></br>
+          <div className="github-link-text">
             find the code here: <br></br>
-            <a
-              className="github-link"
-              href="https://github.com/AlexanderStewart/circles-web"
-            >
+            <a className="github-link" href="https://github.com/AlexanderStewart/circles-web">
               github.com/alexanderstewart/circles-web
             </a>
           </div>
         </div>
       </div>
     );
-  }
-
-  processTouch(event, i) { 
-    this.handleTap(i);
-    event.preventDefault();
   }
 }
 

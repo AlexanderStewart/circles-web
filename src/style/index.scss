@@ -1,7 +1,7 @@
 $backgroundColor: #faf8f0;
 $circleTextColor: #ded8d1;
 
-$nonActiveColor: #ded8d1;
+$nonActiveColor: #CEC1B4;
 $titleContainerBorderColor: #f29721;
 $titleColor: #f29721;
 $bottomTextColor: #918c86;
@@ -33,24 +33,28 @@ body {
 .title-container {
   width: $globalWidth;
   height: $titleContainerHeight;
-  //background-color: $titleContainerColor;
   border-radius: 20px;
   border: solid $titleContainerBorderColor;
   border-width: 2px;
 }
 
 .title {
+  line-height: $titleContainerHeight;
+  margin: 0 auto;
   text-align: center;
   color: $titleColor;
   font-size: $titleSize;
 }
 
-.content-space {
+.content-space-a {
   height: $contentSpaceSize;
 }
 
+.content-space-b {
+  height: $contentSpaceSize / 2;
+}
+
 .github-link-text {
-  text-align: center;
   color: $bottomTextColor;
   font-size: $bottomTextSize;
 }
@@ -58,6 +62,15 @@ body {
 .github-link {
   color: $bottomTextColor;
   font-size: $bottomTextSize;
+}
+
+.line-break {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid $bottomTextColor;
+  margin: 1em 0;
+  padding: 0;
 }
 
 //Breakpoint to larger screens
@@ -85,8 +98,12 @@ $minWidth: 576px;
     font-size: $titleSize;
   }
 
-  .content-space {
+  .content-space-a {
     height: $contentSpaceSize;
+  }
+
+  .content-space-b {
+    height: $contentSpaceSize / 2;
   }
 
   .github-link-text {
