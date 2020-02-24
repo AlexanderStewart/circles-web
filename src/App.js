@@ -3,6 +3,7 @@ import React from "react";
 //Imports.
 import "./style/index.scss";
 import "./style/board.scss";
+import "./style/bounce.css";
 import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
 import { selectedBeside } from "./logic/checkBeside.js";
@@ -21,7 +22,7 @@ class App extends React.Component {
     var circleColors = Array(16).fill(myColors.nonActive);
     circleColors[5] = myColors.active;
     circleColors[10] = myColors.active;
-    circleColors[6] = myColors.nonActive;
+    circleColors[6] = myColors.gold;
 
     var circleTextColors = Array(16).fill(myColors.background);
     circleTextColors[6] = myColors.goldText;
@@ -29,7 +30,7 @@ class App extends React.Component {
     var circleBorderColor = Array(16).fill(myColors.nonActive);
     circleBorderColor[5] = myColors.active;
     circleBorderColor[10] = myColors.active;
-    circleBorderColor[6] = myColors.gold;
+    circleBorderColor[6] = myColors.nonActive;
 
     var circleStates = Array(16).fill("nonactive");
     circleStates[5] = "active";
@@ -52,6 +53,8 @@ class App extends React.Component {
 
   handleTap(i) {
     console.log("circle " + i + " tapped");
+
+    animateBounce(i);
 
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
@@ -146,6 +149,13 @@ class App extends React.Component {
       }
     }
 
+    function animateBounce(i) {
+      var element = document.getElementById(i);
+      element.classList.remove("bounce");
+      element.classList.add("bounce");
+      setTimeout(() => element.classList.remove("bounce"), 400);
+    }
+
     this.setState({
       circleValues: circleValues,
       circleColors: circleColors,
@@ -181,9 +191,9 @@ class App extends React.Component {
           <div className="github-link-text">
             <strong>How To Play: </strong>Select any two 
             adjacent green circles and then select an empty 
-            circle adjacent to one of them. The new circle's 
-            value is the sum of the previously selected 
-            circles.
+            circle adjacent to one of the selected circles. 
+            The new circle's value becomes the sum of the 
+            previously selected circles.
             <br></br>
             <br></br>
             The purpose of the game is to fill in the 

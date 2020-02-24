@@ -9,6 +9,7 @@ class Board extends React.Component {
   renderCircle(i) {
     return (
       <Circle
+        id={i}
         value={this.props.circleValues[i]}
         color={this.props.circleColors[i]}
         textColor={this.props.circleTextColors[i]}

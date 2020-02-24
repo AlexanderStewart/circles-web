@@ -62,7 +62,7 @@ $circleTextSize: $gameBoardWidth * 0.067;
     width: $circleWidth;
     height: $circleWidth;
     float: left;
-    border-width: 8px; 
+    border-width: $gameBoardWidth * 0.02; 
     border-style: solid;
     box-sizing: border-box;
     /* no select text */
@@ -105,6 +105,7 @@ $minWidth: 576px;
   .circle {
     line-height: $circleWidth;
     border-radius: $circleWidth;
+    border-width: $gameBoardWidth * 0.02;
     font-size: $circleTextSize;
     width: $circleWidth;
     height: $circleWidth;
