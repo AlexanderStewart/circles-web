@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/circles-web/static/css/main.e1b11bf3.chunk.css",
-    "main.js": "/circles-web/static/js/main.2c731fea.chunk.js",
-    "main.js.map": "/circles-web/static/js/main.2c731fea.chunk.js.map",
+    "main.js": "/circles-web/static/js/main.d832fb59.chunk.js",
+    "main.js.map": "/circles-web/static/js/main.d832fb59.chunk.js.map",
     "runtime-main.js": "/circles-web/static/js/runtime-main.93dca1da.js",
     "runtime-main.js.map": "/circles-web/static/js/runtime-main.93dca1da.js.map",
     "static/js/2.240916f9.chunk.js": "/circles-web/static/js/2.240916f9.chunk.js",
     "static/js/2.240916f9.chunk.js.map": "/circles-web/static/js/2.240916f9.chunk.js.map",
     "index.html": "/circles-web/index.html",
-    "precache-manifest.eac934d56087cb8b368da721d9291252.js": "/circles-web/precache-manifest.eac934d56087cb8b368da721d9291252.js",
+    "precache-manifest.cd7eb1558d7e95c3a9f6e85f45fb51b8.js": "/circles-web/precache-manifest.cd7eb1558d7e95c3a9f6e85f45fb51b8.js",
     "service-worker.js": "/circles-web/service-worker.js",
     "static/css/main.e1b11bf3.chunk.css.map": "/circles-web/static/css/main.e1b11bf3.chunk.css.map",
     "static/js/2.240916f9.chunk.js.LICENSE.txt": "/circles-web/static/js/2.240916f9.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.93dca1da.js",
     "static/js/2.240916f9.chunk.js",
     "static/css/main.e1b11bf3.chunk.css",
-    "static/js/main.2c731fea.chunk.js"
+    "static/js/main.d832fb59.chunk.js"
   ]
 }

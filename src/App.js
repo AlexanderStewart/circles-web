@@ -131,14 +131,14 @@ class App extends React.Component {
       <div class="global-width">
         <div class="space-above-title"></div>
         <div className="title-container">
-          <div className="title">circles</div>
+          <div className="title">circles - beta</div>
         </div>
         <div className="content-space"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
-          onTouchEnd={(event) => this.processTouch}
-          onMouseUp={this.handleTap}
+          onTouchStart={(event) => this.processTouch}
+          onMouseDown={this.handleTap}
         />
         <div className="content-space"></div>
         <div className="bottom-text-container">

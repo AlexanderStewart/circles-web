@@ -11,8 +11,8 @@ class Board extends React.Component {
       <Circle
         value={this.props.circleValues[i]}
         color={this.props.circleColors[i]}
-        onTouchEnd={() => this.props.onTouchEnd(i)}
-        onMouseUp={() => this.props.onMouseUp(i)}
+        onTouchStart={() => this.props.onTouchStart(i)}
+        onMouseDown={() => this.props.onMouseDown(i)}
       />
     );
   }
