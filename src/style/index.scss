@@ -4,11 +4,13 @@ $circleTextColor: #ded8d1;
 $nonActiveColor: #cec1b4;
 $titleContainerBorderColor: #918c86;
 $titleColor: #f29721;
+$levelColor: #918c86;
 $bottomTextColor: #918c86;
 
 //Smallest Possible
 $globalWidth: 90vw;
-$titleSize: $globalWidth * 0.10;
+$titleSize: $globalWidth * 0.12;
+$levelSize: $globalWidth * 0.07;
 $titleContainerHeight: $globalWidth * 0.177;
 $contentSpaceSize: 4vw;
 $bottomTextSize: $globalWidth * 0.04;
@@ -31,18 +33,21 @@ body {
 }
 
 .title {
-  width: $globalWidth;
-  height: $titleContainerHeight;
-  border-radius: 20px;
-  border: solid $titleContainerBorderColor;
-  box-sizing: border-box;
-  border-width: $globalWidth * 0.02;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: $titleColor;
   font-size: $titleSize;
+}
+
+.level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $levelColor;
+  font-size: $levelSize;
 }
 
 .content-space-a {
@@ -78,7 +83,8 @@ $minWidth: 576px;
 @media (min-width: $minWidth) {
   $globalWidth: $minWidth * 0.9;
 
-  $titleSize: $globalWidth * 0.10;
+  $titleSize: $globalWidth * 0.12;
+  $levelSize: $globalWidth * 0.07;
   $titleContainerHeight: $globalWidth * 0.177;
   $circleTextSize: $globalWidth * 0.067;
   $contentSpaceSize: $minWidth * 0.04;
@@ -89,10 +95,11 @@ $minWidth: 576px;
   }
 
   .title {
-    width: $globalWidth;
-    height: $titleContainerHeight;
     font-size: $titleSize;
-    border-width: $globalWidth * 0.02;
+  }
+
+  .level {
+    font-size: $levelSize;
   }
 
   .content-space-a {

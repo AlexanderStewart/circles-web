@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/circles-web/static/css/main.9f068c75.chunk.css",
-    "main.js": "/circles-web/static/js/main.663e6e87.chunk.js",
-    "main.js.map": "/circles-web/static/js/main.663e6e87.chunk.js.map",
+    "main.css": "/circles-web/static/css/main.8394dde6.chunk.css",
+    "main.js": "/circles-web/static/js/main.8b2a79f2.chunk.js",
+    "main.js.map": "/circles-web/static/js/main.8b2a79f2.chunk.js.map",
     "runtime-main.js": "/circles-web/static/js/runtime-main.93dca1da.js",
     "runtime-main.js.map": "/circles-web/static/js/runtime-main.93dca1da.js.map",
     "static/css/2.4c464271.chunk.css": "/circles-web/static/css/2.4c464271.chunk.css",
     "static/js/2.31d32feb.chunk.js": "/circles-web/static/js/2.31d32feb.chunk.js",
     "static/js/2.31d32feb.chunk.js.map": "/circles-web/static/js/2.31d32feb.chunk.js.map",
     "index.html": "/circles-web/index.html",
-    "precache-manifest.3d3c4fec40f5eb45e54c41b890accac9.js": "/circles-web/precache-manifest.3d3c4fec40f5eb45e54c41b890accac9.js",
+    "precache-manifest.56052bae0bdc4bd033a11d5e30a965c2.js": "/circles-web/precache-manifest.56052bae0bdc4bd033a11d5e30a965c2.js",
     "service-worker.js": "/circles-web/service-worker.js",
     "static/css/2.4c464271.chunk.css.map": "/circles-web/static/css/2.4c464271.chunk.css.map",
-    "static/css/main.9f068c75.chunk.css.map": "/circles-web/static/css/main.9f068c75.chunk.css.map",
+    "static/css/main.8394dde6.chunk.css.map": "/circles-web/static/css/main.8394dde6.chunk.css.map",
     "static/js/2.31d32feb.chunk.js.LICENSE.txt": "/circles-web/static/js/2.31d32feb.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/circles-web/static/media/fontawesome-webfont.fee66e71.woff"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.93dca1da.js",
     "static/css/2.4c464271.chunk.css",
     "static/js/2.31d32feb.chunk.js",
-    "static/css/main.9f068c75.chunk.css",
-    "static/js/main.663e6e87.chunk.js"
+    "static/css/main.8394dde6.chunk.css",
+    "static/js/main.8b2a79f2.chunk.js"
   ]
 }

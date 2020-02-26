@@ -8,7 +8,7 @@ import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
 import { selectedBeside } from "./logic/checkBeside.js";
 import { selectedNums } from "./logic/selectedNums.js";
-import './style/fontawesome.min.css';
+import "./style/fontawesome.min.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -53,17 +53,110 @@ class App extends React.Component {
   }
 
   back() {
-    console.log("back");
+
   }
 
   restart() {
-    console.log("reset");
+    this.resetBoard();
+  }
+
+  resetBoard() {
+    var circleValues = this.state.circleValues;
+
+    for (var z = 0; z <= 15; z++) {
+      this.changeCircleTo(z, "nonactive");
+      circleValues[z] = "";
+    }
+
+    circleValues[5] = 1;
+    circleValues[10] = 2;
+    circleValues[6] = 3;
+
+    this.changeCircleTo(5, "active");
+    this.changeCircleTo(6, "gold");
+    this.changeCircleTo(10, "active");
+
+    for(var t = 0; t <=15; t++) {
+      this.animateBounce(t);
+    }
+
+    this.setState({circleValues: circleValues});
+  }
+
+  //Deselect all selected circles.
+  deselect() {
+    var circleStates = this.state.circleStates;
+
+    for (var z = 0; z <= 15; z++) {
+      if (circleStates[z] === "selected") {
+        this.changeCircleTo(z, "active");
+      }
+    }
+
+    this.setState({ selected: 0 }); 
+  }
+
+  //Handles changing a given circle to a given state.
+  changeCircleTo(i, state) {
+    var circleValues = this.state.circleValues;
+    var circleColors = this.state.circleColors;
+    var circleTextColors = this.state.circleTextColors;
+    var circleBorderColor = this.state.circleBorderColor;
+    var circleStates = this.state.circleStates;
+
+    switch (state) {
+      case "nonactive":
+        circleColors[i] = myColors.nonActive;
+        circleTextColors = myColors.background;
+        circleBorderColor[i] = myColors.nonActive;
+        circleStates[i] = "nonactive";
+        break;
+
+      case "active":
+        circleColors[i] = myColors.active;
+        circleTextColors = myColors.background;
+        circleBorderColor[i] = myColors.active;
+        circleStates[i] = "active";
+        break;
+
+      case "selected":
+        circleColors[i] = myColors.selected;
+        circleTextColors = myColors.background;
+        circleBorderColor[i] = myColors.selected;
+        circleStates[i] = "selected";
+        break;
+
+      case "gold":
+        circleColors[i] = myColors.nonActive;
+        circleTextColors = myColors.goldText;
+        circleBorderColor[i] = myColors.gold;
+        circleStates[i] = "gold";
+        break;
+
+      default:
+        break;
+    }
+
+    this.setState({
+      circleValues: circleValues,
+      circleColors: circleColors,
+      circleTextColors: circleTextColors,
+      circleBorderColor: circleBorderColor,
+      circleStates: circleStates
+    });
+  }
+
+  animateBounce(i) {
+    var element = document.getElementById(i);
+    element.classList.remove("bounce");
+    element.classList.add("bounce");
+    setTimeout(() => element.classList.remove("bounce"), 400);
   }
 
   handleTap(i) {
     console.log("circle " + i + " tapped");
 
-    animateBounce(i);
+    this.animateBounce(i);
 
     var circleValues = this.state.circleValues;
     var circleColors = this.state.circleColors;
@@ -77,103 +170,41 @@ class App extends React.Component {
       //Nonactive circle tapped.
       case "nonactive":
         if (selected === 2 && selectedBeside(i, circleStates)) {
-          changeCircleTo(i, "active");
+          this.changeCircleTo(i, "active");
 
           var sum = selectedNums(circleStates, circleValues);
           circleValues[i] = sum;
 
-          deselect();
+          selected = 0;
+          this.deselect();
         }
         break;
 
       //Active circle tapped.
       case "active":
-        console.log("selected: " + selected);
         if (selected >= 2) {
-          deselect();
+          selected = 0;
+          this.deselect();
         }
         if (!selectedBeside(i, circleStates)) {
-          deselect();
+          selected = 0;
+          this.deselect();
         }
         selected++;
-        changeCircleTo(i, "selected");
+        this.changeCircleTo(i, "selected");
         break;
 
       //Selected circle tapped.
       case "selected":
-        selected--;
-        deselect();
+        selected = 0;
+        this.deselect();
         break;
 
       case "gold":
         break;
-      
+
       default:
         break;
-    }
-
-  // //Reset board.
-  // resetBoard() {
-  //   for(var z = 0; z <= 15; z++) {
-  //     changeCircleTo(z, "nonactive");
-  //   }
-
-  //   changeCircleTo(5, "active");
-  //   changeCircleTo(6, "gold");
-  //   changeCircleTo(10, "active");
-  // }
-
-    //Deselect all selected circles.
-    function deselect() {
-      for (var z = 0; z <= 15; z++) {
-        if (circleStates[z] === "selected") {
-          changeCircleTo(z, "active");
-        }
-      }
-      selected = 0;
-    }
-
-    //Handles changing a given circle to a given state.
-    function changeCircleTo(i, state) {
-      switch (state) {
-        case "nonactive":
-          circleColors[i] = myColors.nonActive;
-          circleTextColors = myColors.background;
-          circleBorderColor[i] = myColors.nonActive;
-          circleStates[i] = "nonactive";
-          break;
-
-        case "active":
-          circleColors[i] = myColors.active;
-          circleTextColors = myColors.background;
-          circleBorderColor[i] = myColors.active;
-          circleStates[i] = "active";
-          break;
-
-        case "selected":
-          circleColors[i] = myColors.selected;
-          circleTextColors = myColors.background;
-          circleBorderColor[i] = myColors.selected;
-          circleStates[i] = "selected";
-          break;
-
-        case "gold":
-          circleColors[i] = myColors.nonActive;
-          circleTextColors = myColors.goldText;
-          circleBorderColor[i] = myColors.gold;
-          circleStates[i] = "gold";
-          break;
-
-        default:
-          break;
-      }
-    }
-
-    function animateBounce(i) {
-      var element = document.getElementById(i);
-      element.classList.remove("bounce");
-      element.classList.add("bounce");
-      setTimeout(() => element.classList.remove("bounce"), 400);
     }
 
     this.setState({
@@ -195,8 +226,12 @@ class App extends React.Component {
     return (
       <div className="global-width">
         <div className="space-above-title"></div>
+        <div className="content-space-b"></div>
+        <div className="line-break"></div>
         <div className="title">circles</div>
-        <div className="content-space-a"></div>
+        <div className="line-break"></div>
+        <div className="level">level 0</div>
+        <div className="line-break"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
@@ -205,30 +240,35 @@ class App extends React.Component {
           onPointerDown={this.handleTap}
         />
         <div className="arrows-container">
-            <div onPointerDown={() => this.back()} className="arrows"><i className="fa fa-arrow-left"></i></div>
-            <div className="space-between-arrows"></div>
-            <div onPointerDown={() => this.restart()} className="arrows"><i className="fa fa-redo"></i></div>
+          <div onPointerDown={() => this.back()} className="arrows">
+            <i className="fa fa-arrow-left"></i>
+          </div>
+          <div className="space-between-arrows"></div>
+          <div onPointerDown={() => this.restart()} className="arrows">
+            <i className="fa fa-redo"></i>
+          </div>
         </div>
         <div className="content-space-b"></div>
         <div className="line-break"></div>
         <div className="content-space-b"></div>
         <div className="bottom-text-container">
           <div className="github-link-text">
-            <strong>How To Play: </strong>Select any two 
-            adjacent green circles and then select an empty 
-            circle adjacent to one of the selected green circles. 
-            The new circle's value becomes the sum of the 
+            <strong>How To Play: </strong>Select any two adjacent green circles
+            and then select an empty circle adjacent to one of the selected
+            green circles. The new circle's value becomes the sum of the
             previously selected circles.
             <br></br>
             <br></br>
-            The purpose of the game is to fill in the 
-            gold circle with a green circle that has 
-            the same number. 
+            The purpose of the game is to fill in the gold circle with a green
+            circle that has the same number.
           </div>
           <br></br>
           <div className="github-link-text">
             find the code here: <br></br>
-            <a className="github-link" href="https://github.com/AlexanderStewart/circles-web">
+            <a
+              className="github-link"
+              href="https://github.com/AlexanderStewart/circles-web"
+            >
               github.com/alexanderstewart/circles-web
             </a>
           </div>
