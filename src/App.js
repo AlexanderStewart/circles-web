@@ -8,6 +8,7 @@ import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
 import { selectedBeside } from "./logic/checkBeside.js";
 import { selectedNums } from "./logic/selectedNums.js";
+import './style/fontawesome.min.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends React.Component {
     var circleColors = Array(16).fill(myColors.nonActive);
     circleColors[5] = myColors.active;
     circleColors[10] = myColors.active;
-    circleColors[6] = myColors.gold;
+    circleColors[6] = myColors.nonActive;
 
     var circleTextColors = Array(16).fill(myColors.background);
     circleTextColors[6] = myColors.goldText;
@@ -30,7 +31,7 @@ class App extends React.Component {
     var circleBorderColor = Array(16).fill(myColors.nonActive);
     circleBorderColor[5] = myColors.active;
     circleBorderColor[10] = myColors.active;
-    circleBorderColor[6] = myColors.nonActive;
+    circleBorderColor[6] = myColors.gold;
 
     var circleStates = Array(16).fill("nonactive");
     circleStates[5] = "active";
@@ -49,6 +50,14 @@ class App extends React.Component {
     };
 
     this.handleTap = this.handleTap.bind(this);
+  }
+
+  back() {
+    console.log("back");
+  }
+
+  restart() {
+    console.log("reset");
   }
 
   handleTap(i) {
@@ -103,7 +112,18 @@ class App extends React.Component {
         break;
     }
 
-    //Deselect all selected circles
+  // //Reset board.
+  // resetBoard() {
+  //   for(var z = 0; z <= 15; z++) {
+  //     changeCircleTo(z, "nonactive");
+  //   }
+
+  //   changeCircleTo(5, "active");
+  //   changeCircleTo(6, "gold");
+  //   changeCircleTo(10, "active");
+  // }
+
+    //Deselect all selected circles.
     function deselect() {
       for (var z = 0; z <= 15; z++) {
         if (circleStates[z] === "selected") {
@@ -173,8 +193,8 @@ class App extends React.Component {
     const circleBorderColor = this.state.circleBorderColor;
 
     return (
-      <div class="global-width">
-        <div class="space-above-title"></div>
+      <div className="global-width">
+        <div className="space-above-title"></div>
         <div className="title">circles</div>
         <div className="content-space-a"></div>
         <Board
@@ -184,6 +204,11 @@ class App extends React.Component {
           circleBorderColor={circleBorderColor}
           onPointerDown={this.handleTap}
         />
+        <div className="arrows-container">
+            <div onPointerDown={() => this.back()} className="arrows"><i className="fa fa-arrow-left"></i></div>
+            <div className="space-between-arrows"></div>
+            <div onPointerDown={() => this.restart()} className="arrows"><i className="fa fa-redo"></i></div>
+        </div>
         <div className="content-space-b"></div>
         <div className="line-break"></div>
         <div className="content-space-b"></div>
@@ -191,7 +216,7 @@ class App extends React.Component {
           <div className="github-link-text">
             <strong>How To Play: </strong>Select any two 
             adjacent green circles and then select an empty 
-            circle adjacent to one of the selected circles. 
+            circle adjacent to one of the selected green circles. 
             The new circle's value becomes the sum of the 
             previously selected circles.
             <br></br>
@@ -207,7 +232,7 @@ class App extends React.Component {
               github.com/alexanderstewart/circles-web
             </a>
           </div>
-          <div class="space-above-title"></div>
+          <div className="space-above-title"></div>
         </div>
       </div>
     );

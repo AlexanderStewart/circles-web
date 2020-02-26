@@ -1,10 +1,10 @@
 $backgroundColor: #faf8f0;
 $circleTextColor: #faf8f0;
 
-$nonActiveColor: #CEC1B4;
+$nonActiveColor: #cec1b4;
 $titleContainerColor: #f29721;
 $titleColor: #faf8f0;
-$bottomTextColor: #ded8d1;
+$bottomTextColor: #918c86;
 
 //Smallest Possible
 $gameBoardWidth: 90vw;
@@ -16,63 +16,79 @@ $gameRowWidth: $gameBoardHeight + $space * 3;
 $circleTextSize: $gameBoardWidth * 0.067;
 
 .game-board {
-    margin: 0 auto;
-    width: $gameBoardWidth;
-    height: $gameBoardHeight;
-    background-color: $backgroundColor;
-    border-radius: 25px;
-  }
-  
-  .game-row {
-    width: $gameRowWidth;
-    height: $circleWidth;
-    background-color: $backgroundColor;
-    border-radius: 25px;
-  }
-  
-  .align-left {
-    float: left;
-  }
-  
-  .align-right {
-    float: right;
-  }
-  
-  .horizontal-space {
-    width: $space;
-    height: 1px;
-    float: left;
-  }
-  
-  .vertical-space {
-    width: 1px;
-    height: $space;
-    float: top;
-  }
-  
-  .circle {
-    background-color: $nonActiveColor;
-    color: $circleTextColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: $circleWidth;
-    font-size: $circleTextSize;
-    width: $circleWidth;
-    height: $circleWidth;
-    float: left;
-    border-width: $gameBoardWidth * 0.02; 
-    border-style: solid;
-    box-sizing: border-box;
-    /* no select text */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+  margin: 0 auto;
+  width: $gameBoardWidth;
+  height: $gameBoardHeight;
+  background-color: $backgroundColor;
+  border-radius: 25px;
+}
+
+.game-row {
+  width: $gameRowWidth;
+  height: $circleWidth;
+  background-color: $backgroundColor;
+  border-radius: 25px;
+}
+
+.align-left {
+  float: left;
+}
+
+.align-right {
+  float: right;
+}
+
+.horizontal-space {
+  width: $space;
+  height: 1px;
+  float: left;
+}
+
+.vertical-space {
+  width: 1px;
+  height: $space;
+  float: top;
+}
+
+.circle {
+  background-color: $nonActiveColor;
+  color: $circleTextColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: $circleWidth;
+  font-size: $circleTextSize;
+  width: $circleWidth;
+  height: $circleWidth;
+  float: left;
+  border-width: $gameBoardWidth * 0.02;
+  border-style: solid;
+  box-sizing: border-box;
+  /* no select text */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.arrows-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.arrows {
+  font-size: $gameBoardWidth * 0.13;
+  color: $bottomTextColor;
+}
+
+.space-between-arrows {
+  width: $gameBoardWidth * 0.08;
+}
 
 $minWidth: 576px;
 @media (min-width: $minWidth) {
@@ -109,5 +125,13 @@ $minWidth: 576px;
     font-size: $circleTextSize;
     width: $circleWidth;
     height: $circleWidth;
+  }
+
+  .arrows {
+    font-size: $gameBoardWidth * 0.13;
+  }
+
+  .space-between-arrows {
+    width: $gameBoardWidth * 0.08;
   }
 }
