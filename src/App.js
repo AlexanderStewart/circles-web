@@ -24,6 +24,7 @@ class App extends React.Component {
     var circleStates = Array(16).fill("nonactive");
     var selected = 0;
     var runConfetti = false;
+    var snackBarOpen = false;
 
     this.state = {
       circleValues: circleValues,
@@ -34,7 +35,8 @@ class App extends React.Component {
       selected: selected,
       runConfetti: runConfetti,
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
+      snackBarOpen: snackBarOpen
     };
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -113,10 +115,7 @@ class App extends React.Component {
           if (circleValues[i] === finalSum) {
             this.changeCircleTo(i, "goldWin");
 
-            var lsLevel = Number(localStorage.getItem("level")) + 1;
-            localStorage.setItem("level", lsLevel);
-
-            this.animateWin();
+            this.onWin();
 
             selected = 0;
             this.deselect();
@@ -143,8 +142,14 @@ class App extends React.Component {
   }
 
   forwardALevel() {
-    console.log("foward a level clicked");
-    //console.log("level stored: " + localStorage.getItem("level"));
+    var lsLevel = Number(localStorage.getItem("level")) + 1;
+    localStorage.setItem("level", lsLevel);
+
+    this.setState({
+      snackBarOpen: false
+    });
+
+    this.restart();
   }
 
   restart() {
@@ -154,7 +159,8 @@ class App extends React.Component {
 
   resetBoard() {
     this.setState({
-      runConfetti: false
+      runConfetti: false,
+      snackBarOpen: false
     });
 
     var circleValues = this.state.circleValues;
@@ -260,9 +266,10 @@ class App extends React.Component {
     setTimeout(() => element.classList.remove("bounce"), 400);
   }
 
-  animateWin() {
+  onWin() {
     this.setState({
-      runConfetti: true
+      runConfetti: true,
+      snackBarOpen: true
     });
   }
 
@@ -275,18 +282,37 @@ class App extends React.Component {
     const runConfetti = this.state.runConfetti;
     const width = this.state.width;
     const height = this.state.height;
+    const snackBarOpen = this.state.snackBarOpen;
 
     return (
       <div className="global-width">
-        <div key={runConfetti}>
-          <Confetti width={width} height={height} run={runConfetti} />
+        <div onPointerDown={() => this.forwardALevel()}>
+          <Snackbar
+            open={snackBarOpen}
+            message={
+              <span className="github-link-text">
+                You win! Click here to go to the next level!{" "}
+                <i className="fa fa-arrow-right"></i>
+              </span>
+            }
+          />
         </div>
+        <div key={runConfetti}>
+          <Confetti
+            width={width}
+            height={height}
+            run={runConfetti}
+            gravity={0.3}
+          />
+        </div>
+
         <div className="space-above-title"></div>
         <div className="line-break"></div>
         <div className="title">circles</div>
         <div className="line-break"></div>
         <div className="level">level 0</div>
         <div className="line-break"></div>
+        <div className="content-space-b"></div>
         <Board
           circleValues={circleValues}
           circleColors={circleColors}
@@ -329,12 +355,6 @@ class App extends React.Component {
           </div>
         </div>
         <div className="space-above-title"></div>
-        <Snackbar
-          open={true}
-          autoHideDuration={6000}
-          onClose={this.forwardALevel()}
-          message={<span>You win! Click here to go to the next level! <i className="fa fa-arrow-right"></i></span>}
-        />
       </div>
     );
   }
