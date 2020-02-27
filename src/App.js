@@ -9,7 +9,9 @@ import { myColors } from "./style/colors.js";
 import { selectedBeside } from "./logic/checkBeside.js";
 import { selectedNums } from "./logic/selectedNums.js";
 import "./style/fontawesome.min.css";
-import Confetti from 'react-confetti'
+import Confetti from "react-confetti";
+
+import Snackbar from "@material-ui/core/Snackbar";
 
 class App extends React.Component {
   constructor(props) {
@@ -30,18 +32,32 @@ class App extends React.Component {
       circleBorderColor: circleBorderColor,
       circleStates: circleStates,
       selected: selected,
-      runConfetti: runConfetti
+      runConfetti: runConfetti,
+      width: window.innerWidth,
+      height: window.innerHeight
     };
 
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.handleTap = this.handleTap.bind(this);
   }
 
   componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+
     if (!localStorage.getItem("level")) {
       localStorage.setItem("level", 0);
     }
 
     this.resetBoard();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   handleTap(i) {
@@ -122,8 +138,13 @@ class App extends React.Component {
     });
   }
 
-  back() {
-    console.log("level stored: " + localStorage.getItem("level"));
+  backALevel() {
+    console.log("back a level clicked");
+  }
+
+  forwardALevel() {
+    console.log("foward a level clicked");
+    //console.log("level stored: " + localStorage.getItem("level"));
   }
 
   restart() {
@@ -250,12 +271,15 @@ class App extends React.Component {
     const circleColors = this.state.circleColors;
     const circleTextColors = this.state.circleTextColors;
     const circleBorderColor = this.state.circleBorderColor;
+
     const runConfetti = this.state.runConfetti;
+    const width = this.state.width;
+    const height = this.state.height;
 
     return (
       <div className="global-width">
         <div key={runConfetti}>
-          <Confetti run={runConfetti}/>
+          <Confetti width={width} height={height} run={runConfetti} />
         </div>
         <div className="space-above-title"></div>
         <div className="line-break"></div>
@@ -271,7 +295,7 @@ class App extends React.Component {
           onPointerDown={this.handleTap}
         />
         <div className="arrows-container">
-          <div onPointerDown={() => this.back()} className="arrows">
+          <div onPointerDown={() => this.backALevel()} className="arrows">
             <i className="fa fa-arrow-left"></i>
           </div>
           <div className="space-between-arrows"></div>
@@ -305,6 +329,12 @@ class App extends React.Component {
           </div>
         </div>
         <div className="space-above-title"></div>
+        <Snackbar
+          open={true}
+          autoHideDuration={6000}
+          onClose={this.forwardALevel()}
+          message={<span>You win! Click here to go to the next level! <i className="fa fa-arrow-right"></i></span>}
+        />
       </div>
     );
   }

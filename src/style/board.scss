@@ -5,6 +5,8 @@ $nonActiveColor: #cec1b4;
 $titleContainerColor: #f29721;
 $titleColor: #faf8f0;
 $bottomTextColor: #918c86;
+$red: #F67C5F;
+$gold: #EDC53E;
 
 //Smallest Possible
 $gameBoardWidth: 90vw;
@@ -14,9 +16,9 @@ $space: $circleWidth / 14;
 $gameBoardHeight: $circleWidth * 4;
 $gameRowWidth: $gameBoardHeight + $space * 3;
 $circleTextSize: $gameBoardWidth * 0.067;
+$centerText: $gameBoardHeight / 8;
 
 .game-board {
-  margin: 0 auto;
   width: $gameBoardWidth;
   height: $gameBoardHeight;
   background-color: $backgroundColor;
