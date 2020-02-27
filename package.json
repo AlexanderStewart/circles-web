@@ -13,6 +13,7 @@
     "font-awesome": "^4.7.0",
     "framer-motion": "^1.8.4",
     "react": "^16.12.0",
+    "react-confetti": "^5.0.1",
     "react-dom": "^16.12.0",
     "react-icons": "^3.9.0",
     "react-scripts": "3.4.0",
