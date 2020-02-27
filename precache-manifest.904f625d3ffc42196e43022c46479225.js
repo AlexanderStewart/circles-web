@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25ea317f771ef2f22952569613943230",
+    "revision": "61ed70ffdf1072c5bf0165e55b418fdf",
     "url": "/circles-web/index.html"
   },
   {
-    "revision": "49faef8c0d0d18e6b78b",
+    "revision": "447768df5d505b11a207",
     "url": "/circles-web/static/css/2.4c464271.chunk.css"
   },
   {
-    "revision": "de65d75069beb735c76f",
+    "revision": "cc14d2204f1b04269377",
     "url": "/circles-web/static/css/main.8394dde6.chunk.css"
   },
   {
-    "revision": "49faef8c0d0d18e6b78b",
-    "url": "/circles-web/static/js/2.31d32feb.chunk.js"
+    "revision": "447768df5d505b11a207",
+    "url": "/circles-web/static/js/2.e49ef2cf.chunk.js"
   },
   {
     "revision": "99bd0487192ec9e7d9ee8fbbd91ee444",
-    "url": "/circles-web/static/js/2.31d32feb.chunk.js.LICENSE.txt"
+    "url": "/circles-web/static/js/2.e49ef2cf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "de65d75069beb735c76f",
-    "url": "/circles-web/static/js/main.8b2a79f2.chunk.js"
+    "revision": "cc14d2204f1b04269377",
+    "url": "/circles-web/static/js/main.9c335bf7.chunk.js"
   },
   {
     "revision": "97fe5d081f4755a3565a",
