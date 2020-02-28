@@ -1,4 +1,4 @@
-export function selectedNums(circleStates, circleValues) {
+export default function selectedNums(circleStates, circleValues) {
     var indexes = [];
     for(var z = 0; z < circleStates.length; z++) {
         if (circleStates[z] === "selected") {

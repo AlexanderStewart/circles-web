@@ -1,4 +1,4 @@
-export function selectedBeside(i, circleStates) {
+export default function selectedBeside(i, circleStates) {
     var indexes = [];
     for(var z = 0; z < circleStates.length; z++) {
         if (circleStates[z] === "selected") {

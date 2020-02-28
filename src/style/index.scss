@@ -68,6 +68,11 @@ body {
   font-size: $bottomTextSize;
 }
 
+.center-text {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .line-break {
   display: block;
   height: 2px;

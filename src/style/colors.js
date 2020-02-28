@@ -4,7 +4,8 @@ const myColors = {
   selected: "#f29721",
   nonActive: "#CEC1B4",
   gold: "#EDC53E",
-  goldText: "#CEC1B4"
+  goldText: "#CEC1B4",
+  white: "#FFFFFF",
 };
 
 export { myColors };

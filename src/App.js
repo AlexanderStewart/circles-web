@@ -1,17 +1,22 @@
 import React from "react";
 
-//Imports.
+//Component imports.
+import Board from "./components/Board";
+import MySnackbar from "./components/Snackbar";
+
+//Logic imports.
+import selectedBeside from "./logic/checkBeside.js";
+import selectedNums from "./logic/selectedNums.js";
+
+//Style imports.
 import "./style/index.scss";
 import "./style/board.scss";
 import "./style/bounce.css";
-import Board from "./components/Board";
 import { myColors } from "./style/colors.js";
-import { selectedBeside } from "./logic/checkBeside.js";
-import { selectedNums } from "./logic/selectedNums.js";
 import "./style/fontawesome.min.css";
-import Confetti from "react-confetti";
 
-import Snackbar from "@material-ui/core/Snackbar";
+//Package imports.
+import Confetti from "react-confetti";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,9 +39,9 @@ class App extends React.Component {
       circleStates: circleStates,
       selected: selected,
       runConfetti: runConfetti,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      snackBarOpen: snackBarOpen
+      snackBarOpen: snackBarOpen,
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
     };
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -47,8 +52,12 @@ class App extends React.Component {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
 
+    //Initializing if value is undefined.
     if (!localStorage.getItem("level")) {
       localStorage.setItem("level", 0);
+    }
+    if (!localStorage.getItem("highestLevelAchieved")) {
+      localStorage.setItem("highestLevelAchieved", 0);
     }
 
     this.resetBoard();
@@ -59,12 +68,14 @@ class App extends React.Component {
   }
 
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    this.setState({
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
+    });
   }
 
   handleTap(i) {
     console.log("circle " + i + " tapped");
-
     this.animateBounce(i);
 
     var circleValues = this.state.circleValues;
@@ -74,7 +85,7 @@ class App extends React.Component {
     var circleStates = this.state.circleStates;
     var selected = this.state.selected;
 
-    //Handles the main logic of the game alongside /src/logic.js
+    //This switch statement handles the main logic of the game alongside /src/logic.js
     switch (circleStates[i]) {
       //Nonactive circle tapped.
       case "nonactive":
@@ -109,6 +120,7 @@ class App extends React.Component {
         this.deselect();
         break;
 
+      //Gold circle tapped.
       case "gold":
         if (selected === 2 && selectedBeside(i, circleStates)) {
           const finalSum = selectedNums(circleStates, circleValues);
@@ -138,23 +150,37 @@ class App extends React.Component {
   }
 
   backALevel() {
-    console.log("back a level clicked");
+    var lsLevel = Number(localStorage.getItem("level")) - 1;
+
+    if (lsLevel >= 0) {
+      localStorage.setItem("level", lsLevel);
+
+      this.resetBoard();
+    }
+  }
+
+  onSnackBarClicked() {
+    if (
+      localStorage.getItem("level") ===
+      localStorage.getItem("highestLevelAchieved")
+    ) {
+      var lsLevel = Number(localStorage.getItem("highestLevelAchieved")) + 1;
+      localStorage.setItem("highestLevelAchieved", lsLevel);
+    }
+
+    this.forwardALevel();
   }
 
   forwardALevel() {
-    var lsLevel = Number(localStorage.getItem("level")) + 1;
-    localStorage.setItem("level", lsLevel);
+    if (
+      localStorage.getItem("level") <
+      localStorage.getItem("highestLevelAchieved")
+    ) {
+      var lsLevel = Number(localStorage.getItem("level")) + 1;
+      localStorage.setItem("level", lsLevel);
 
-    this.setState({
-      snackBarOpen: false
-    });
-
-    this.restart();
-  }
-
-  restart() {
-    console.log("reset");
-    this.resetBoard();
+      this.resetBoard();
+    }
   }
 
   resetBoard() {
@@ -280,27 +306,22 @@ class App extends React.Component {
     const circleBorderColor = this.state.circleBorderColor;
 
     const runConfetti = this.state.runConfetti;
-    const width = this.state.width;
-    const height = this.state.height;
+    const windowWidth = this.state.windowWidth;
+    const windowHeight = this.state.windowHeight;
     const snackBarOpen = this.state.snackBarOpen;
 
     return (
       <div className="global-width">
-        <div onPointerDown={() => this.forwardALevel()}>
-          <Snackbar
-            open={snackBarOpen}
-            message={
-              <span className="github-link-text">
-                You win! Click here to go to the next level!{" "}
-                <i className="fa fa-arrow-right"></i>
-              </span>
-            }
-          />
+        <div
+          id="snack-bar-container"
+          onPointerDown={() => this.onSnackBarClicked()}
+        >
+          <MySnackbar snackBarOpen={snackBarOpen} />
         </div>
         <div key={runConfetti}>
           <Confetti
-            width={width}
-            height={height}
+            width={windowWidth}
+            height={windowHeight}
             run={runConfetti}
             gravity={0.3}
           />
@@ -310,7 +331,7 @@ class App extends React.Component {
         <div className="line-break"></div>
         <div className="title">circles</div>
         <div className="line-break"></div>
-        <div className="level">level 0</div>
+        <div className="level">level {localStorage.getItem("level")}</div>
         <div className="line-break"></div>
         <div className="content-space-b"></div>
         <Board
@@ -325,8 +346,12 @@ class App extends React.Component {
             <i className="fa fa-arrow-left"></i>
           </div>
           <div className="space-between-arrows"></div>
-          <div onPointerDown={() => this.restart()} className="arrows">
+          <div onPointerDown={() => this.resetBoard()} className="arrows">
             <i className="fa fa-redo"></i>
+          </div>
+          <div className="space-between-arrows"></div>
+          <div onPointerDown={() => this.forwardALevel()} className="arrows">
+            <i className="fa fa-arrow-right"></i>
           </div>
         </div>
         <div className="content-space-b"></div>
