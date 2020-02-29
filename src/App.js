@@ -172,12 +172,18 @@ class App extends React.Component {
   }
 
   forwardALevel() {
-    if (
-      localStorage.getItem("level") <
+    console.log("forward a level");
+
+    const level = Number(localStorage.getItem("level"));
+    const highestLevelAchieved = Number(
       localStorage.getItem("highestLevelAchieved")
-    ) {
+    );
+
+    if (level < highestLevelAchieved) {
       var lsLevel = Number(localStorage.getItem("level")) + 1;
       localStorage.setItem("level", lsLevel);
+
+      console.log("Level before resetBoard: " + localStorage.getItem("level"));
 
       this.resetBoard();
     }
@@ -197,8 +203,10 @@ class App extends React.Component {
     }
 
     var level = localStorage.getItem("level");
-    const goldIndex = [6, 9, 15, 3];
-    const goldValue = [3, 4, 5, 6];
+    const goldIndex = [6, 9, 15, 3, 9, 15, 6, 0, 13, 9, 3, 11, 0, 13, 11];
+    const goldValue = [3, 4, 5, 6, 6, 7, 7, 8, 9, 10, 10, 10, 11, 11, 11];
+
+    console.log("number of levels: " + (goldValue.length - 1));
 
     this.changeCircleTo(goldIndex[level], "gold");
     circleValues[goldIndex[level]] = goldValue[level];
@@ -313,7 +321,7 @@ class App extends React.Component {
     return (
       <div className="global-width">
         <div
-          id="snack-bar-container"
+          className="snack-bar-container"
           onPointerDown={() => this.onSnackBarClicked()}
         >
           <MySnackbar snackBarOpen={snackBarOpen} />
