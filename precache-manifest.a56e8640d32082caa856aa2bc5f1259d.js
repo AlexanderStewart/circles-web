@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de8d86d0fb287dc8664c1dc3b83abf99",
+    "revision": "d94ccf1fabd209a47f2c96b37cc56a76",
     "url": "/circles-web/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/circles-web/static/css/2.4c464271.chunk.css"
   },
   {
-    "revision": "17b5f5ffe9d4c2e5d4f9",
-    "url": "/circles-web/static/css/main.1df6fccc.chunk.css"
+    "revision": "b6c3e12f1a5d275142c8",
+    "url": "/circles-web/static/css/main.b5848db0.chunk.css"
   },
   {
     "revision": "60c60877d5bae050bbe7",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/circles-web/static/js/2.d58df52c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "17b5f5ffe9d4c2e5d4f9",
-    "url": "/circles-web/static/js/main.30915eef.chunk.js"
+    "revision": "b6c3e12f1a5d275142c8",
+    "url": "/circles-web/static/js/main.bf371018.chunk.js"
   },
   {
     "revision": "97fe5d081f4755a3565a",
