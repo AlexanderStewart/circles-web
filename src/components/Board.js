@@ -1,7 +1,7 @@
 import React from "react";
 
 //Imports.
-import "../style/index.scss";
+import "../style/app.scss";
 import "../style/board.scss";
 import { Circle } from "./circle.js";
 

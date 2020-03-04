@@ -9,7 +9,7 @@ import selectedBeside from "./logic/checkBeside.js";
 import selectedNums from "./logic/selectedNums.js";
 
 //Style imports.
-import "./style/index.scss";
+import "./style/app.scss";
 import "./style/board.scss";
 import "./style/bounce.css";
 import { myColors } from "./style/colors.js";
