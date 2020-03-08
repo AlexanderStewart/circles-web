@@ -83,7 +83,7 @@ $centerText: $gameBoardHeight / 8;
   text-align: center;
 }
 
-.arrows {
+.arrow {
   font-size: $gameBoardWidth * 0.13;
   color: $bottomTextColor;
 }
@@ -129,7 +129,7 @@ $minWidth: 576px;
     height: $circleWidth;
   }
 
-  .arrows {
+  .arrow {
     font-size: $gameBoardWidth * 0.13;
   }
 

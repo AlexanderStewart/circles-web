@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/circles-web/static/css/main.ba074ace.chunk.css",
-    "main.js": "/circles-web/static/js/main.d413271f.chunk.js",
-    "main.js.map": "/circles-web/static/js/main.d413271f.chunk.js.map",
+    "main.css": "/circles-web/static/css/main.a30c04c7.chunk.css",
+    "main.js": "/circles-web/static/js/main.8bd763c4.chunk.js",
+    "main.js.map": "/circles-web/static/js/main.8bd763c4.chunk.js.map",
     "runtime-main.js": "/circles-web/static/js/runtime-main.93dca1da.js",
     "runtime-main.js.map": "/circles-web/static/js/runtime-main.93dca1da.js.map",
     "static/css/2.4c464271.chunk.css": "/circles-web/static/css/2.4c464271.chunk.css",
     "static/js/2.d58df52c.chunk.js": "/circles-web/static/js/2.d58df52c.chunk.js",
     "static/js/2.d58df52c.chunk.js.map": "/circles-web/static/js/2.d58df52c.chunk.js.map",
     "index.html": "/circles-web/index.html",
-    "precache-manifest.6ff4e75aeab57db73885589cc44ae181.js": "/circles-web/precache-manifest.6ff4e75aeab57db73885589cc44ae181.js",
+    "precache-manifest.f3abd5a2c283a43cb3b1d2300621e6c9.js": "/circles-web/precache-manifest.f3abd5a2c283a43cb3b1d2300621e6c9.js",
     "service-worker.js": "/circles-web/service-worker.js",
     "static/css/2.4c464271.chunk.css.map": "/circles-web/static/css/2.4c464271.chunk.css.map",
-    "static/css/main.ba074ace.chunk.css.map": "/circles-web/static/css/main.ba074ace.chunk.css.map",
+    "static/css/main.a30c04c7.chunk.css.map": "/circles-web/static/css/main.a30c04c7.chunk.css.map",
     "static/js/2.d58df52c.chunk.js.LICENSE.txt": "/circles-web/static/js/2.d58df52c.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/circles-web/static/media/fontawesome-webfont.fee66e71.woff"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.93dca1da.js",
     "static/css/2.4c464271.chunk.css",
     "static/js/2.d58df52c.chunk.js",
-    "static/css/main.ba074ace.chunk.css",
-    "static/js/main.d413271f.chunk.js"
+    "static/css/main.a30c04c7.chunk.css",
+    "static/js/main.8bd763c4.chunk.js"
   ]
 }

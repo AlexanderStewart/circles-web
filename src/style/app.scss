@@ -50,11 +50,11 @@ body {
   font-size: $levelSize;
 }
 
-.content-space-a {
+.space-a {
   height: $contentSpaceSize;
 }
 
-.content-space-b {
+.space-b {
   height: $contentSpaceSize / 2;
 }
 
@@ -117,11 +117,11 @@ $minWidth: 576px;
     font-size: $levelSize;
   }
 
-  .content-space-a {
+  .space-a {
     height: $contentSpaceSize;
   }
 
-  .content-space-b {
+  .space-b {
     height: $contentSpaceSize / 2;
   }
 

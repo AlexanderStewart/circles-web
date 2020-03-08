@@ -40,8 +40,8 @@ class App extends React.Component {
       selected: selected,
       runConfetti: runConfetti,
       snackBarOpen: snackBarOpen,
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight
+      windowWidth: document.documentElement.clientWidth,
+      windowHeight: document.documentElement.clientHeight
     };
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -69,8 +69,8 @@ class App extends React.Component {
 
   updateWindowDimensions() {
     this.setState({
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight
+      windowWidth: document.documentElement.clientWidth,
+      windowHeight: document.documentElement.clientHeight
     });
   }
 
@@ -350,15 +350,15 @@ class App extends React.Component {
           onPointerDown={this.handleTap}
         />
         <div className="arrows-container">
-          <div onPointerDown={() => this.backALevel()} className="arrows">
+          <div onPointerDown={() => this.backALevel()} className="arrow">
             <i className="fa fa-arrow-left"></i>
           </div>
           <div className="space-between-arrows"></div>
-          <div onPointerDown={() => this.resetBoard()} className="arrows">
+          <div onPointerDown={() => this.resetBoard()} className="arrow">
             <i className="fa fa-redo"></i>
           </div>
           <div className="space-between-arrows"></div>
-          <div onPointerDown={() => this.forwardALevel()} className="arrows">
+          <div onPointerDown={() => this.forwardALevel()} className="arrow">
             <i className="fa fa-arrow-right"></i>
           </div>
         </div>
