@@ -30,6 +30,7 @@ class App extends React.Component {
     var selected = 0;
     var runConfetti = false;
     var snackBarOpen = false;
+    var finalLevel = 21;
 
     this.state = {
       circleValues: circleValues,
@@ -40,6 +41,7 @@ class App extends React.Component {
       selected: selected,
       runConfetti: runConfetti,
       snackBarOpen: snackBarOpen,
+      finalLevel: finalLevel,
       windowWidth: document.documentElement.clientWidth,
       windowHeight: document.documentElement.clientHeight
     };
@@ -52,7 +54,7 @@ class App extends React.Component {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
 
-    //Initializing if value is undefined.
+    //Initializing if values are undefined.
     if (!localStorage.getItem("level")) {
       localStorage.setItem("level", 0);
     }
@@ -172,8 +174,6 @@ class App extends React.Component {
   }
 
   forwardALevel() {
-    console.log("forward a level");
-
     const level = Number(localStorage.getItem("level"));
     const highestLevelAchieved = Number(
       localStorage.getItem("highestLevelAchieved")
@@ -183,38 +183,80 @@ class App extends React.Component {
       var lsLevel = Number(localStorage.getItem("level")) + 1;
       localStorage.setItem("level", lsLevel);
 
-      console.log("Level before resetBoard: " + localStorage.getItem("level"));
-
       this.resetBoard();
     }
   }
 
   resetBoard() {
-    this.setState({
-      runConfetti: false,
-      snackBarOpen: false
-    });
-
     var circleValues = this.state.circleValues;
+    var level = Number(localStorage.getItem("level"));
+    var finalLevel = this.state.finalLevel;
 
     for (var z = 0; z <= 15; z++) {
       this.changeCircleTo(z, "nonactive");
       circleValues[z] = "";
     }
 
-    var level = localStorage.getItem("level");
-    const goldIndex = [6, 9, 15, 3, 9, 15, 6, 0, 13, 9, 3, 11, 0, 13, 11];
-    const goldValue = [3, 4, 5, 6, 6, 7, 7, 8, 9, 10, 10, 10, 11, 11, 11];
+    //If level is not win level.
+    if(level !== finalLevel) {
+      this.setState({
+        runConfetti: false,
+        snackBarOpen: false
+      });
 
-    console.log("number of levels: " + (goldValue.length - 1));
+      //Levels.
+      const goldIndex = [6, 9, 15, 3, 9, 15, 6, 0, 13, 9, 3, 11, 0, 13, 11, 4, 15, 6, 4, 8, 3];
+      const goldValue = [3, 4, 5, 6, 6, 7, 7, 8, 9, 10, 10, 10, 11, 11, 11, 12, 13, 12, 14, 15, 16];
 
-    this.changeCircleTo(goldIndex[level], "gold");
-    circleValues[goldIndex[level]] = goldValue[level];
+      //-1 because levels start at zero.
+      console.log("number of levels: " + (goldValue.length - 1));
 
-    this.changeCircleTo(5, "active");
-    circleValues[5] = 1;
-    this.changeCircleTo(10, "active");
-    circleValues[10] = 2;
+      this.changeCircleTo(goldIndex[level], "gold");
+      circleValues[goldIndex[level]] = goldValue[level];
+
+      this.changeCircleTo(5, "active");
+      circleValues[5] = 1;
+      this.changeCircleTo(10, "active");
+      circleValues[10] = 2;
+    }
+    else if(level === this.state.finalLevel){
+      this.setState({
+        runConfetti: true,
+        snackBarOpen: false
+      });
+
+      this.changeCircleTo(0, "gold");
+      circleValues[0] = "Y";
+      this.changeCircleTo(1, "gold");
+      circleValues[1] = "O";
+      this.changeCircleTo(2, "gold");
+      circleValues[2] = "U";
+
+      this.changeCircleTo(4, "gold");
+      circleValues[4] = "B";
+      this.changeCircleTo(5, "gold");
+      circleValues[5] = "E";
+      this.changeCircleTo(6, "gold");
+      circleValues[6] = "A";
+      this.changeCircleTo(7, "gold");
+      circleValues[7] = "T";
+
+      this.changeCircleTo(9, "gold");
+      circleValues[9] = "T";
+      this.changeCircleTo(10, "gold");
+      circleValues[10] = "H";
+      this.changeCircleTo(11, "gold");
+      circleValues[11] = "E";
+
+      this.changeCircleTo(12, "gold");
+      circleValues[12] = "G";
+      this.changeCircleTo(13, "gold");
+      circleValues[13] = "A";
+      this.changeCircleTo(14, "gold");
+      circleValues[14] = "M";
+      this.changeCircleTo(15, "gold");
+      circleValues[15] = "E";
+    }
 
     for (var t = 0; t <= 15; t++) {
       this.animateBounce(t);
@@ -368,7 +410,7 @@ class App extends React.Component {
         <div className="bottom-text-container">
           <div className="github-link-text">
             <strong>How To Play: </strong>Select any two adjacent green circles
-            and then select an empty circle adjacent to one of the selected
+            and then select an empty gray circle adjacent to one of the selected
             green circles. The new circle's value becomes the sum of the
             previously selected circles.
             <br></br>
@@ -378,7 +420,7 @@ class App extends React.Component {
           </div>
           <br></br>
           <div className="github-link-text">
-            find the code here: <br></br>
+            Circles is licensed under the MIT licence. find the code here: <br></br>
             <a
               className="github-link"
               href="https://github.com/AlexanderStewart/circles-web"
